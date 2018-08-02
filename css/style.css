@@ -1,0 +1,406 @@
+:root {
+  --main-yellow: #ffcb00;
+  --main-purple: #26052e;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font: 18px "IBM Plex Sans", sans-serif;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: var(--main-purple);
+  background: var(--main-yellow);
+  text-rendering: geometricPrecision;
+  overflow-y: auto;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-size: 100%;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 1.3em;
+  margin-bottom: 1.5em;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  height: 100vh;
+  width: 100vw;
+  box-shadow: 0 0 180px #5c2821cc inset;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+nav {
+  color: var(--main-purple);
+  width: 100%;
+  padding: 1em 0;
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  transition: all 250ms ease-in-out;
+}
+
+#navbar {
+  width: 100%;
+  display: flex;
+  padding: 0.5em 1em;
+}
+
+#navbar a {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+}
+
+.brand {
+  display: none;
+  width: 100%;
+  color: var(--main-yellow);
+}
+
+.brand h1 {
+  font-size: 1.3em;
+  margin: 0;
+  font-weight: 500;
+}
+
+.brand h2 {
+  font-size: 0.52em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.nav-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  transition: max-height 500ms ease-in-out;
+}
+
+#home {
+  display: none;
+}
+
+#hero {
+  opacity: 0;
+  opacity: 1\9;
+  /* internet explorer */
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  animation: fadein 1s ease-in-out 1s forwards;
+  will-change: opacity;
+  margin-top: -40px;
+}
+
+#hero-parallax {
+  width: 100%;
+  max-width: 1200px;
+  animation: zoomin 2s ease-out 1s forwards;
+  will-change: transform;
+}
+
+#hero-static {
+  display: none;
+  width: 100%;
+  height: 38vh;
+  background: url("../img/logo-mobile.svg") no-repeat center;
+  background-size: contain;
+}
+
+.scroll {
+  width: 100%;
+  max-width: 80px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  cursor: pointer;
+  opacity: 0;
+  opacity: 1\9;
+  /* internet explorer */
+  transform: translate(-50%, 200px);
+  transform: translate(-50%, 0) \9;
+  animation: fadein 1s ease-in-out 2s forwards, slide-up 750ms ease-in-out 2s forwards;
+  will-change: opacity;
+}
+
+.menu-arrow {
+  width: 100%;
+  max-width: 40px;
+  padding: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+#about .container,
+#games .container,
+#design .container,
+#writing .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+  justify-items: center;
+  align-items: center;
+  padding: 1em;
+}
+
+#games .parallax {
+  order: 4;
+}
+
+#writing .parallax {
+  order: 8;
+}
+
+.parallax {
+  background: var(--main-purple);
+  width: 100%;
+  height: 300px;
+}
+
+#contact {
+  font-size: .8em;
+  text-align: center;
+  background: var(--main-yellow);
+}
+#contact > div {
+  line-height: 2.5;
+}
+.social {
+  margin: 0 8px;
+}
+
+.social svg {
+  width: 18px;
+  height: 18px;
+  fill: #26052E;
+}
+
+.social svg:hover {
+  fill: #450047;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.7em;
+  padding: 1.5em 0;
+}
+
+/* MEDIA QUERIES */
+
+/* mobile */
+
+@media (max-width: 640px),
+(max-height: 420px) {
+  #hero {
+    opacity: 1;
+    animation: none;
+  }
+  #hero-parallax {
+    display: none;
+  }
+  #hero-static {
+    display: block;
+  }
+  .scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 16px;
+  }
+  #home {
+    display: none;
+  }
+  nav {
+    background: var(--main-purple);
+    color: var(--main-yellow) !important;
+    height: 80px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    animation: all 500ms ease-in-out;
+    padding: 1em 0 !important;
+  }
+  #navbar {
+    padding: 0;
+    flex-flow: column nowrap;
+    align-items: center;
+    overflow: hidden;
+  }
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 55px;
+    cursor: pointer;
+  }
+  .nav-links {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    line-height: 2;
+    margin-top: 10px;
+  }
+  .menu-arrow {
+    display: block;
+    position: absolute;
+    bottom: -23px;
+    transition: all 250ms ease-in-out;
+  }
+  section {
+    padding-top: 110px;
+  }
+  .container {
+    max-width: 600px;
+  }
+  #about .container,
+  #games .container,
+  #design .container,
+  #writing .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  body {
+    font-size: 20px;
+  }
+  nav {
+    height: 100px;
+  }
+  .menu-arrow {
+    max-width: 50px;
+    bottom: -30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #navbar,
+  .container {
+    max-width: 924px;
+  }
+}
+
+@media (min-width: 1280px) {
+  #navbar,
+  .container {
+    max-width: 1180px;
+  }
+}
+
+@media (min-width: 1920px) {
+  body {
+    font-size: 23px;
+  }
+  #navbar,
+  .container {
+    max-width: 1250px;
+  }
+}
+
+.slide {
+  bottom: 55px;
+}
+
+.grow {
+  height: 100vh;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.bg-dark {
+  background: var(--main-purple);
+  color: var(--main-yellow);
+  padding: 0;
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomin {
+  from {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translate(-50%, 200px);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}
